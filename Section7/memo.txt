@@ -1,0 +1,17 @@
++template
+하나의 root를 가지도록 작성 -> 웬만한 경우 <div>로 감싸고시작하자
+
++디렉토리를 통한 코드정리
+src 디렉토리에 componet 폴더를 만들어 관리하며 기능별로 다른 디렉토리를 사용하면 유지보수 비용 감소
+
++컴포넌트 이름
+export default 에서 대문자 사용시 template에서 -소문자로 변경된다.
+ex) export default {
+        componet : {
+            appHeader : Header
+        }
+    }
+
+    <template>
+        <app-header> 대문자가 -소문자로 변경됨 </app-header>
+    </template>    

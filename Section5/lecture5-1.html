@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app1">
+  <h1 ref="heading">{{ title }}</h1>
+  <button v-on:click="show" ref="mybutton">Show Paragraph</button>
+  <p v-if="showParagraph">This is not always visible</p>
+</div>
+<!-- 다른 id의 div를 생성하고 new vue를 사용하여 새로운 인스턴스 생성-->
+<div id="app2">
+  <h1>{{title}}</h1>
+  <button @click="changeVm1Title">changeVm1Title</button>
+  <hello></hello>
+  <hello></hello>
+  <hello></hello>
+  <hello></hello>
+  <hello></hello>
+  <hello></hello>
+</div>
+
+<div id="app3"> 
+</div>
+
+<script src="lecture5-1.js"></script>

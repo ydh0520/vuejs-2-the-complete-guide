@@ -1,0 +1,18 @@
+vue cli 를 통하여 좀더 효율 적으로 vue 프로젝트 진행이 가능하다.
+주요기능으로는 web-pack 기능을 제공하며 .vue파일 을 생성한다.
+
++시작하기
+npm install -g vue-cli 명령어를 통하여 vue cli를 다운 받는다.
+
++sample code
+vue init webpack-simple vue-cli     vue 예시 코드를 다운하고 
+cd vue-cli                          생성된 폴더로 이동하여
+npm install                         필요한 모듈을 다운받아
+npm run dev                         로 실행한다.
+
++예시코드 구성
+index.html 에서 페이지의 기본적인 구조를 설정한다
+
++.vue file
+vue에서 사용할 template를 관리하며 .js파일에서 필요한 부분을 import해서 사용한다.
+

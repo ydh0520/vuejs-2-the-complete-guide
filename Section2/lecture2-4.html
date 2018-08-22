@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="lecture2.css" />
+</head>
+<!-- css 적용 하기 -->
+
+<body>
+    <div id="app">
+        <!-- :class="{ 이름(class이름):변수(boolean) }" 형식의 key-value 형태로 적용한다-->
+        <div class="demo" @click="attachRed=!attachRed" :class="{red:attachRed,blue:!attachRed}"></div>
+        <!-- 위의 형식과 다르게 스크립트에서 한번에 처리 가능하다. -->
+        <div class="demo" @click="attachRed=!attachRed" :class="divClasses"></div>
+        <!-- vue의 변수를 직접적으로 적용할수 있다.-->
+        <div class="demo" :class="color"></div>
+        <!--[]를 통하여 여러가지 상태를 적용할수 있다.-->
+        <div class="demo" :class="[color,{red:attachRed}]"></div>
+        <input type="text" v-model="color">
+        <hr>
+        <!-- class 를 통한 css 변경 뿐만 아니라 style을 통한 css 적용이 가능하다. -->
+        <div class="demo" :style="{backgroundColor:color2}"></div>
+        <!-- style을 통한 접근 역시 함수로도 가능 -->
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="[myStyle,{height:width+'px'}]"></div>
+        <input type="text" v-model="color2">
+        <input type="text" v-model="width">
+        <hr>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            attachRed: false,
+            color: 'green',
+            color2: "gray",
+            width:100
+        },
+        computed: {
+            divClasses: function () {
+                return {
+                    red: this.attachRed,
+                    blue: !this.attachRed
+                }
+            },
+            myStyle: function () {
+                return {
+                    backgroundColor: this.color2,
+                    width: this.width + "px"
+                }
+            }
+        },
+        methods: {
+
+        }
+    });
+</script>
+
+</html>

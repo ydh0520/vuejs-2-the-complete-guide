@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--v-model 사용시 모든 변수의 변화가 모든 변수에 적용된다.-->
+        <input type="text" v-model="name">
+        <p>{{name}}</p>
+        <hr>
+        <button v-on:click="increase">Increase</button>
+        <button v-on:click="decrease">Dncrease</button>
+        <p>counter : {{counter}}</p>
+        <p>result : {{result}}</p>
+        <hr>
+        <!--reuslt를 사용하기 위하여 위의 1개의 변수와 2개의 함수를 사용하는것보다 더 좋은 방법을 제시 
+            위의 방식의 경우 버튼 클릭 이전까지 result의 값이 없음-->
+        <button v-on:click="counter++">Increase</button>
+        <button v-on:click="counter--">Dncrease</button>
+        <p>counter : {{counter}}</p>
+        <p>result : {{result2()}}</p>
+
+        <hr>
+        <button v-on:click="counter2++">computedincrese</button>
+        <p>{{computedincrese}}||{{methodscounter()}}</p>
+        
+        <hr>
+        <!--단축키-->
+        <!--v-on의 경우 @로 v-bide의 경우 : 로 대체 가능하다.-->
+        <button v-on:click="chageLink">Click to chage Link</button>
+        <button @click="chageLink">Click to chage Link</button>        
+        <a v-bind:href="link">Link</a>
+        <a :href="link">Link</a>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            name: "Max",
+            counter: 0,
+            result: "",
+            counter2: 0,
+            link:"http://google.com"
+        },
+        /*methods의 경우 자신이 사용하는 변수가 아닌 다른 변수의 사용에도 반응하는 
+        반면 computed의 경우 자신이 사용하는 변수의 값의 변환에만 호출된다. 
+        변수의 값의 변화가 없을 경우 캐싱된 값을 사용한다.*/
+        computed: {
+            computedincrese: function () {
+                console.log("Computed");
+                return this.counter2;
+            }
+        },
+        /*computed의 경우 해당하는 변수 의 값이 변할때 동작하는 함수를 설정할 수 있다.
+        이때 변수에 this즉 해당 vue객체를 선언해야 한다.
+        counted의 경우 해당 값을 바로 반환하는데 적합하고 서버나 어떤 처리가 필요할 경우 watch 가 적합하다.*/
+        watch:{
+            counter2 : function(){
+                var vm=this;
+                setTimeout(function(){
+                    vm.counter2=0;
+                },2000)
+            }
+        },
+        methods: {
+            increase: function () {
+                this.counter++;
+                this.result = this.counter > 5 ? "Greater 5" : "Smaller 5";
+            },
+            decrease: function () {
+                this.counter--;
+                this.result = this.counter > 5 ? "Greater 5" : "Smaller 5";
+            },
+            result2: function () {
+                return this.counter > 5 ? "Greater 5" : "Smaller 5";
+            },
+            methodscounter: function () {
+                console.log("Methds");
+                return this.counter2;
+            },
+            chageLink:function(){
+                this.link="http://apple.com";
+            }
+        }
+    });
+</script>
+
+</html>

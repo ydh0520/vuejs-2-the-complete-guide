@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="increase(2,$event)">Click me</button>
+            <p>{{counter}}</p>
+            <button v-on:click="counter2++">Click me</button>
+            <p>{{counter2}}</p>
+            <p v-on:mousemove="updateCoordinates($event)">
+                Coordinates:{{ x }}/{{ y }}<br>
+                <sapn v-on:mousemove.stop>stop1</sapn>
+                <sapn v-on:mousemove="mousemovestop">stop2</sapn>
+            </p>
+            <input type="text" v-on:keyup.enter.space="alert">
+        </div>
+        
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    counter:0,
+                    x:0,
+                    y:0,
+                    counter2:1
+                },
+                methods:{
+                    increase:function(step){
+                        this.counter+=step;
+                    },
+                    updateCoordinates:function(event){
+                        this.x=event.clientX;
+                        this.y=event.clientY;
+                    },
+                    mousemovestop:function(event){
+                        event.stopPropagation();
+                    },
+                    alert:function(){
+                        alert("hh");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
