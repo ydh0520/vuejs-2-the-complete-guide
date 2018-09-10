@@ -16,6 +16,7 @@
         destroyed() {
             console.log("Destroyed")
         },
+        //keep alive를 사용할 경우 다음과 같은 생명주기가 추가된다.
         deactivated() {
             console.log("Deactiviated")
         },
